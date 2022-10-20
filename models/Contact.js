@@ -1,70 +1,38 @@
 const mongoose = require("mongoose");
+const validator = require("validator");
 
 // Schema Design
 const contactSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Please provide a name for this product"],
+      required: [true, "Please provide a name"],
       trim: true,
-      unique: [true, "Name must be unique"],
+      unique: [true, "This name {VALUE} is already use"],
       minLength: [3, "Name must be at least 3 charcters"],
-      maxLength: [100, "Name is too large"],
+      maxLength: [100, "Name can't be more than 100 charcters"],
     },
-    description: {
+    phone: {
       type: String,
-      required: true,
+      trim: true,
+      unique: [true, "This phone number {VALUE} is already use"],
+      required: [true, "Provide a phone number"],
     },
-    price: {
-      type: Number,
-      required: true,
-      min: [0, "Price can't be negative"],
-    },
-    unit: {
+    email: {
       type: String,
-      required: true,
-      enum: {
-        values: ["kg", "liter", "pcs"],
-        message: "Unit value must be kg/liter/pcs",
-      },
-    },
-    quantity: {
-      type: Number,
-      required: true,
-      min: [0, "Quantity can't be negative"],
-      validate: {
-        validator: (value) => {
-          const isInteger = Number.isInteger(value);
-          if (isInteger) {
-            return true;
-          } else {
-            return false;
-          }
-        },
-      },
-      message: "Quantity must be an integer",
+      validate: [validator.isEmail, "Provide a valid Email"],
+      trim: true,
+      lowercase: true,
+      unique: [true, "This email {VALUE} is already use"],
     },
     status: {
       type: String,
       required: true,
       enum: {
-        values: ["in-stock", "out-of-stock", "discountinued"],
-        message: "Status can't be {VALUE} ",
+        values: ["active", "inactive"],
+        message: "Status can't be {VALUE}. Only 'active' or 'inactive'",
       },
     },
-    supplier: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Supplier",
-    },
-    categories: [
-      {
-        name: {
-          type: String,
-          required: true,
-        },
-        _id: mongoose.Schema.Types.ObjectId,
-      },
-    ],
   },
   {
     timestamps: true,
@@ -73,8 +41,8 @@ const contactSchema = mongoose.Schema(
 
 // Middleware
 contactSchema.pre("save", function (next) {
-  if (this.quantity == 0) {
-    this.status = "out-of-stock";
+  if (this.email == "") {
+    this.status = "inactive";
   }
   next();
 });
