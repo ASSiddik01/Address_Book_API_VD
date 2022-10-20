@@ -6,16 +6,20 @@ const {
   updateContactService,
   deleteContactService,
 } = require("../services/contact.services");
+const { generateToken } = require("../utils/token");
 
 // Get API
 exports.getData = async (req, res, next) => {
   try {
     const result = await getContactService(req.query);
-
+    const token = await generateToken();
     res.status(200).json({
       success: true,
       message: `Data get successfully`,
-      data: result,
+      data: {
+        token,
+        result,
+      },
     });
   } catch (error) {
     res.status(400).json({

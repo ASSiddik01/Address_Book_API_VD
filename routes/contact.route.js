@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const contactControllers = require("../controllers/contact.controller");
+const verifyToken = require("../middleware/verifyToken");
 
 router
   .route("/bulk-update")
@@ -9,7 +10,7 @@ router
    * @apiDescription Sava data
    * @apiPermission all
    */
-  .post(contactControllers.saveBulkData);
+  .post(verifyToken, contactControllers.saveBulkData);
 
 router
   .route("/")
@@ -24,7 +25,7 @@ router
    * @apiDescription Sava data
    * @apiPermission all
    */
-  .post(contactControllers.saveData);
+  .post(verifyToken, contactControllers.saveData);
 
 router
   .route("/:id")
@@ -33,18 +34,18 @@ router
    * @apiDescription Get data by id parameter
    * @apiPermission all
    */
-  .get(contactControllers.getDataById)
+  .get(verifyToken, contactControllers.getDataById)
   /**
    * @api {patch} /:id
    * @apiDescription Updata data by id parameter
    * @apiPermission all
    */
-  .patch(contactControllers.updateData)
+  .patch(verifyToken, contactControllers.updateData)
   /**
    * @api {delete} /:id
    * @apiDescription Delete data by id parameter
    * @apiPermission all
    */
-  .delete(contactControllers.deleteData);
+  .delete(verifyToken, contactControllers.deleteData);
 
 module.exports = router;

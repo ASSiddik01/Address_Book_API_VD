@@ -15,6 +15,7 @@ const contactSchema = mongoose.Schema(
     phone: {
       type: String,
       trim: true,
+      validate: [validator.isMobilePhone, "Provide a valid Email"],
       unique: [true, "This phone number {VALUE} is already use"],
       required: [true, "Provide a phone number"],
     },
