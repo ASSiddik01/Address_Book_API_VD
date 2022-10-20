@@ -2,10 +2,8 @@ const {
   getContactService,
   getContactByIdService,
   saveContactService,
-  updateDataService,
-  updateMultipleDataService,
+  updateContactService,
   deleteDataService,
-  deleteMultipleDataService,
 } = require("../services/contact.services");
 
 // Get API
@@ -27,7 +25,7 @@ exports.getData = async (req, res, next) => {
   }
 };
 
-// Get Tour by ID API
+// Get Conatct by ID API
 exports.getDataById = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -73,26 +71,7 @@ exports.updateData = async (req, res, next) => {
   try {
     const { id } = req.params;
     const reqData = req.body;
-    const result = await updateDataService(id, reqData);
-    res.status(200).json({
-      success: true,
-      message: `Data update successfully`,
-      data: result,
-    });
-  } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: `Data update failed`,
-      error: error.message,
-    });
-  }
-};
-
-// Update Multiple API
-exports.updateMultipleData = async (req, res, next) => {
-  try {
-    const reqData = req.body;
-    const result = await updateMultipleDataService(reqData);
+    const result = await updateContactService(id, reqData);
     res.status(200).json({
       success: true,
       message: `Data update successfully`,
@@ -112,25 +91,6 @@ exports.deleteData = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await deleteDataService(id);
-    res.status(200).json({
-      success: true,
-      message: `Data delete successfully`,
-      data: result,
-    });
-  } catch (error) {
-    res.status(400).json({
-      success: false,
-      message: `Data delete failed`,
-      error: error.message,
-    });
-  }
-};
-
-// Delete Multiple API
-exports.deleteMultipleData = async (req, res, next) => {
-  try {
-    const reqData = req.body;
-    const result = await deleteMultipleDataService(reqData);
     res.status(200).json({
       success: true,
       message: `Data delete successfully`,

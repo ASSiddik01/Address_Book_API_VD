@@ -3,24 +3,6 @@ const router = express.Router();
 const contactControllers = require("../controllers/contact.controller");
 
 router
-  .route("/bulk-update")
-  /**
-   * @api {patch} /bulk-update
-   * @apiDescription Update multiple data from body query
-   * @apiPermission all
-   */
-  .patch(contactControllers.updateMultipleData);
-
-router
-  .route("/bulk-delete")
-  /**
-   * @api {delete} /bulk-delete
-   * @apiDescription Delete multiple data from body query
-   * @apiPermission all
-   */
-  .delete(contactControllers.deleteMultipleData);
-
-router
   .route("/")
   /**
    * @api {get} /
