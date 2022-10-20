@@ -5,7 +5,7 @@ const {
   updateMultipleDataService,
   deleteDataService,
   deleteMultipleDataService,
-} = require("../services/data.services");
+} = require("../services/contact.services");
 
 // Get API
 exports.getData = async (req, res, next) => {

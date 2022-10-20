@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 // Schema Design
-const dataSchema = mongoose.Schema(
+const contactSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -72,7 +72,7 @@ const dataSchema = mongoose.Schema(
 );
 
 // Middleware
-dataSchema.pre("save", function (next) {
+contactSchema.pre("save", function (next) {
   if (this.quantity == 0) {
     this.status = "out-of-stock";
   }
@@ -80,11 +80,11 @@ dataSchema.pre("save", function (next) {
 });
 
 // Instance Methods
-dataSchema.methods.logger = function () {
-  console.log(`Data save for ${this.name}`);
+contactSchema.methods.logger = function () {
+  console.log(`Contact save for ${this.name}`);
 };
 
 // Model Create
-const Data = mongoose.model("replace_by_collection_name", dataSchema);
+const Contact = mongoose.model("contact", contactSchema);
 
-module.exports = Data;
+module.exports = Contact;

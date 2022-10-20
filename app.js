@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const dataRoute = require("./routes/data.route");
+const contactRoute = require("./routes/contact.route");
 
 // Middleware
 app.use(express.json());
@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 });
 
 // Data Route
-app.use("/api/v1/data", dataRoute);
+app.use("/api/v1/contact", contactRoute);
 
 // Unknown API Handle
 app.all("*", (req, res) => {
