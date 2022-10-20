@@ -1,9 +1,31 @@
 const Contact = require("../models/Contact");
 
 // Get Contact Service
-exports.getContactService = async () => {
-  const result = await Contact.find({});
-  return result;
+exports.getContactService = async (reqData) => {
+  // Query Handle
+  let filters = { ...reqData };
+  const excludeFields = ["sort", "page", "limit", "fields"];
+  excludeFields.forEach((filter) => delete filters[filter]);
+  const { limit = 2, page = 1, sort, fields } = reqData;
+  const queries = {};
+  if (sort) {
+    const result = sort.split(",").join(" ");
+    queries.sortBy = result;
+  }
+  if (fields) {
+    const result = fields.split(",").join(" ");
+    queries.fields = result;
+  }
+  // Pagination
+  const totalContact = await Contact.countDocuments(filters);
+  const totalPage = Math.ceil(totalContact / limit);
+
+  const result = await Contact.find(filters)
+    .skip(+(page - 1) * limit)
+    .limit(+limit)
+    .select(queries.fields)
+    .sort(queries.sortBy);
+  return { totalContact, totalPage, result };
 };
 
 // Get Contact by ID Service
