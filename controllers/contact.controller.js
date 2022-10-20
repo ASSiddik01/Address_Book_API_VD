@@ -8,7 +8,7 @@ const {
 } = require("../services/contact.services");
 const { generateToken } = require("../utils/token");
 
-// Get API
+// Get Controller
 exports.getData = async (req, res, next) => {
   try {
     const result = await getContactService(req.query);
@@ -30,7 +30,7 @@ exports.getData = async (req, res, next) => {
   }
 };
 
-// Get Conatct by ID API
+// Get Conatct by ID Controller
 exports.getDataById = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -49,7 +49,7 @@ exports.getDataById = async (req, res, next) => {
   }
 };
 
-// Save API
+// Save Controller
 exports.saveData = async (req, res, next) => {
   try {
     // Save
@@ -71,7 +71,7 @@ exports.saveData = async (req, res, next) => {
   }
 };
 
-// Save Bulk API
+// Save Bulk Controller
 exports.saveBulkData = async (req, res, next) => {
   try {
     // Save
@@ -92,7 +92,7 @@ exports.saveBulkData = async (req, res, next) => {
   }
 };
 
-// Update API
+// Update Controller
 exports.updateData = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -112,7 +112,7 @@ exports.updateData = async (req, res, next) => {
   }
 };
 
-// Delete API
+// Delete Controller
 exports.deleteData = async (req, res, next) => {
   try {
     const { id } = req.params;
