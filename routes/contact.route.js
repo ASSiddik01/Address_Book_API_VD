@@ -3,6 +3,15 @@ const router = express.Router();
 const contactControllers = require("../controllers/contact.controller");
 
 router
+  .route("/bulk-update")
+  /**
+   * @api {post} /bulk-delete
+   * @apiDescription Sava data
+   * @apiPermission all
+   */
+  .post(contactControllers.saveBulkData);
+
+router
   .route("/")
   /**
    * @api {get} /

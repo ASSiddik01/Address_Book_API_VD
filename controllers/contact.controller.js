@@ -2,6 +2,7 @@ const {
   getContactService,
   getContactByIdService,
   saveContactService,
+  saveBulkContactService,
   updateContactService,
   deleteContactService,
 } = require("../services/contact.services");
@@ -51,6 +52,27 @@ exports.saveData = async (req, res, next) => {
     const reqData = req.body;
     const result = await saveContactService(reqData);
     result.logger();
+
+    res.status(200).json({
+      success: true,
+      message: `Data inserted successfully`,
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: `Data inserted failed`,
+      error: error.message,
+    });
+  }
+};
+
+// Save Bulk API
+exports.saveBulkData = async (req, res, next) => {
+  try {
+    // Save
+    const reqData = req.body;
+    const result = await saveBulkContactService(reqData);
 
     res.status(200).json({
       success: true,

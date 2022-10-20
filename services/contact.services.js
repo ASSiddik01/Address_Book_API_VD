@@ -19,6 +19,12 @@ exports.saveContactService = async (reqData) => {
   return result;
 };
 
+// Save Bulk Contact Service
+exports.saveBulkContactService = async (reqData) => {
+  const result = await Contact.create(reqData);
+  return result;
+};
+
 // Update Contact Service
 exports.updateContactService = async (id, reqData) => {
   const result = await Contact.updateOne(
