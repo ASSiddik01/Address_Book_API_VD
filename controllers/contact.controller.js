@@ -3,7 +3,7 @@ const {
   getContactByIdService,
   saveContactService,
   updateContactService,
-  deleteDataService,
+  deleteContactService,
 } = require("../services/contact.services");
 
 // Get API
@@ -90,7 +90,7 @@ exports.updateData = async (req, res, next) => {
 exports.deleteData = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const result = await deleteDataService(id);
+    const result = await deleteContactService(id);
     res.status(200).json({
       success: true,
       message: `Data delete successfully`,
