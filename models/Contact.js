@@ -23,11 +23,14 @@ const contactSchema = mongoose.Schema(
       validate: [validator.isEmail, "Provide a valid Email"],
       trim: true,
       lowercase: true,
-      unique: [true, "This email {VALUE} is already use"],
+      unique: [true, "This email is already use"],
+    },
+    address: {
+      type: String,
+      trim: true,
     },
     status: {
       type: String,
-      required: true,
       enum: {
         values: ["active", "inactive"],
         message: "Status can't be {VALUE}. Only 'active' or 'inactive'",
@@ -41,7 +44,7 @@ const contactSchema = mongoose.Schema(
 
 // Middleware
 contactSchema.pre("save", function (next) {
-  if (this.email == "") {
+  if (this.address == "") {
     this.status = "inactive";
   }
   next();

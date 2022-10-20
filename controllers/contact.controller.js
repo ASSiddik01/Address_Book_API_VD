@@ -1,6 +1,6 @@
 const {
   getDataService,
-  saveDataService,
+  saveContactService,
   updateDataService,
   updateMultipleDataService,
   deleteDataService,
@@ -32,7 +32,7 @@ exports.saveData = async (req, res, next) => {
   try {
     // Save
     const reqData = req.body;
-    const result = await saveDataService(reqData);
+    const result = await saveContactService(reqData);
     result.logger();
 
     res.status(200).json({
