@@ -1,5 +1,6 @@
 const {
   getContactService,
+  getContactByIdService,
   saveContactService,
   updateDataService,
   updateMultipleDataService,
@@ -21,6 +22,25 @@ exports.getData = async (req, res, next) => {
     res.status(400).json({
       success: false,
       message: `Data can't get`,
+      error: error.message,
+    });
+  }
+};
+
+// Get Tour by ID API
+exports.getDataById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const result = await getContactByIdService(id);
+    res.status(200).json({
+      success: true,
+      message: `Data get successfully`,
+      data: result,
+    });
+  } catch (error) {
+    res.status(400).json({
+      success: false,
+      message: `Data get failed`,
       error: error.message,
     });
   }

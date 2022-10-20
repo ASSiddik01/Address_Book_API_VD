@@ -6,6 +6,12 @@ exports.getContactService = async () => {
   return result;
 };
 
+// Get Contact by ID Service
+exports.getContactByIdService = async (id) => {
+  const result = await Contact.find({ _id: id });
+  return result;
+};
+
 // Save Contact Service
 exports.saveContactService = async (reqData) => {
   const data = new Contact(reqData);

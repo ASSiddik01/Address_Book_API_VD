@@ -39,6 +39,12 @@ router
   .route("/:id")
   /**
    * @api {patch} /:id
+   * @apiDescription Get data by id parameter
+   * @apiPermission all
+   */
+  .get(contactControllers.getDataById)
+  /**
+   * @api {patch} /:id
    * @apiDescription Updata data by id parameter
    * @apiPermission all
    */
