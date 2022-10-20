@@ -1,5 +1,5 @@
 const {
-  getDataService,
+  getContactService,
   saveContactService,
   updateDataService,
   updateMultipleDataService,
@@ -10,8 +10,7 @@ const {
 // Get API
 exports.getData = async (req, res, next) => {
   try {
-    const queryData = req.query;
-    const result = await getDataService(queryData);
+    const result = await getContactService(req.query);
 
     res.status(200).json({
       success: true,
