@@ -23,7 +23,7 @@ In this application has 6 API end-point
 Application Base URL
 
 ```bash
-app_url
+https://address-book-api-vd.onrender.com
 ```
 
 <ol>
@@ -32,13 +32,13 @@ app_url
 ### _Get all contact or specifice contact as your query API_
 
 ```bash
-app_url/api/v1/contact
+https://address-book-api-vd.onrender.com/api/v1/contact
 ```
 
 This get api end-point provide all contact or specific contact as your query. Here dafault limit 2 which means in one page show only 2 contact. Your can query by fields, limit, sort, page . Query perameter link like this
 
 ```bash
-app_url/api/v1/contact?sort=name&limit=4&fields=name,phone,email&page=3
+https://address-book-api-vd.onrender.com/api/v1/contact?sort=name&limit=4&fields=name,phone,email&page=3
 ```
 
 </li>
@@ -47,7 +47,7 @@ app_url/api/v1/contact?sort=name&limit=4&fields=name,phone,email&page=3
 ### _Create contact API_
 
 ```bash
-app_url/api/v1/contact
+https://address-book-api-vd.onrender.com/api/v1/contact
 ```
 
 > This api is secure by jwt. So first the hitting the get all contact api end-point, you will find the token number as a token named key. Copy only the token value and send by headers as Authorization key and value will be the given format - Brearer your_token_number
@@ -84,7 +84,7 @@ Give the example below:-
 ### _Create bulk contact API_
 
 ```bash
-app_url/api/v1/bulk-contact
+https://address-book-api-vd.onrender.com/api/v1/bulk-contact
 ```
 
 > This api is secure by jwt. So first the hitting the get all contact api end-point, you will find the token number as a token named key. Copy only the token value and send by headers as Authorization key and value will be the given format - Brearer your_token_number
@@ -120,13 +120,13 @@ Give the example below:-
 ### _Get the specific contact API end-point_
 
 ```bash
-app_url/api/v1/contact/:id
+https://address-book-api-vd.onrender.com/api/v1/contact/:id
 ```
 
 Example API
 
 ```bash
-app_url/api/v1/contact/635214641558f7413125811e
+https://address-book-api-vd.onrender.com/api/v1/contact/635214641558f7413125811e
 ```
 
 </li>
@@ -135,7 +135,7 @@ app_url/api/v1/contact/635214641558f7413125811e
 ### _Update the specific contact API end-point_
 
 ```bash
-app_url/api/v1/contact/:id
+https://address-book-api-vd.onrender.com/api/v1/contact/:id
 ```
 
 > This api is secure by jwt. So first the hitting the get all contact api end-point, you will find the token number as a token named key. Copy only the token value and send by headers as Authorization key and value will be the given format - Brearer your_token_number
@@ -145,7 +145,7 @@ app_url/api/v1/contact/:id
 Example API
 
 ```bash
-app_url/api/v1/contact/635214641558f7413125811e
+https://address-book-api-vd.onrender.com/api/v1/contact/635214641558f7413125811e
 ```
 
 This api get the id form url params and get the update data from the req body. Api work in patch method not put. Body example like this
@@ -164,7 +164,7 @@ This api get the id form url params and get the update data from the req body. A
 ### _Delete the specific contact API end-point_
 
 ```bash
-app_url/api/v1/contact/:id
+https://address-book-api-vd.onrender.com/api/v1/contact/:id
 ```
 
 > This api is secure by jwt. So first the hitting the get all contact api end-point, you will find the token number as a token named key. Copy only the token value and send by headers as Authorization key and value will be the given format - Brearer your_token_number
@@ -174,7 +174,7 @@ app_url/api/v1/contact/:id
 Example API
 
 ```bash
-app_url/api/v1/contact/635214641558f7413125811e
+https://address-book-api-vd.onrender.com/api/v1/contact/635214641558f7413125811e
 ```
 
 This api get the id form url params and get the update data from the req body. Body example like this
