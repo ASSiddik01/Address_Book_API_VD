@@ -26,6 +26,12 @@ Application Base URL
 https://address-book-api-vd.onrender.com
 ```
 
+> First hit this url to check the application is running or not
+
+<br>
+
+If you want to test these api by thunder client vs extention first download "thunder-collection_Address Book.json" from "thunder_client_api_test" folder and import this in thunder client.
+
 <ol>
 <li>
 
@@ -35,10 +41,10 @@ https://address-book-api-vd.onrender.com
 https://address-book-api-vd.onrender.com/api/v1/contact
 ```
 
-This get api end-point provide all contact or specific contact as your query. Here dafault limit 2 which means in one page show only 2 contact. Your can query by fields, limit, sort, page . Query perameter link like this
+This get api end-point provide all contact or specific contact as your query. Here dafault limit 2 which means in one page show only 2 contact. Your can query by fields, limit, sort, page, status . Query perameter link like this
 
 ```bash
-https://address-book-api-vd.onrender.com/api/v1/contact?sort=name&limit=4&fields=name,phone,email&page=3
+https://address-book-api-vd.onrender.com/api/v1/contact?limit=0&sort=name&fields=name,phone&status=inactive
 ```
 
 </li>
