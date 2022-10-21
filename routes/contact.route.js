@@ -4,9 +4,9 @@ const contactControllers = require("../controllers/contact.controller");
 const verifyToken = require("../middleware/verifyToken");
 
 router
-  .route("/bulk-update")
+  .route("/bulk-contact")
   /**
-   * @api {post} /bulk-update
+   * @api {post} /bulk-contact
    * @apiDescription Create bulk contact
    * @apiPermission Authorized user
    *
@@ -20,14 +20,15 @@ router
   .post(verifyToken, contactControllers.saveBulkData);
 
 router
-  .route("/")
+  .route("/contact")
   /**
-   * @api {get} /
+   * @api {get} /contact
    * @apiDescription Create bulk contact
    * @apiPermission All user
    *
    * @apiParam  {Number{1-}}      [page=1]     List page
    * @apiParam  {Number{1-}}      [limit=2]    Users per page
+   *
    * @apiParam  {String}          [sort=name]  Users sorting
    * @apiParam  {String}          [fidlds=name,phone,....]  Users property slection
    *
@@ -35,7 +36,7 @@ router
    */
   .get(contactControllers.getData)
   /**
-   * @api {post} /
+   * @api {post} /contact
    * @apiDescription Create a contact
    * @apiPermission Authorized user
    *
@@ -49,22 +50,17 @@ router
   .post(verifyToken, contactControllers.saveData);
 
 router
-  .route("/:id")
+  .route("/contact/:id")
   /**
-   * @api {get} /:id
+   * @api {get} /contact/:id
    * @apiDescription Get contact by id parameter
-   * @apiPermission Authorized user
-   *
-   * @apiHeader {String} Authorization   User's access token
+   * @apiPermission All user
    *
    * @apiSuccess {Object[]} Get a contact.
-   *
-   * @apiError (Unauthorized 401)  Unauthorized  Only authenticated users can access the data
-   * @apiError (Forbidden 403)     Forbidden     Only authorized user can access the data
    */
-  .get(verifyToken, contactControllers.getDataById)
+  .get(contactControllers.getDataById)
   /**
-   * @api {patch} /:id
+   * @api {patch} /contact/:id
    * @apiDescription Updata contact by id parameter
    * @apiPermission Authorized user
    *
@@ -77,7 +73,7 @@ router
    */
   .patch(verifyToken, contactControllers.updateData)
   /**
-   * @api {delete} /:id
+   * @api {delete} /contact/:id
    * @apiDescription Delete contact by id parameter
    * @apiPermission Authorized user
    *

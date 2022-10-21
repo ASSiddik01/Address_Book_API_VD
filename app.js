@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
 });
 
 // Data Route
-app.use("/api/v1/contact", contactRoute);
+app.use("/api/v1", contactRoute);
 
 // Unknown API Handle
 app.all("*", (req, res) => {
